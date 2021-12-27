@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Readable } from 'stream'
-import { Stripe } from "stripe";
+import Stripe from "stripe";
 import { stripe } from '../../services/stripe'
 import { saveSubscription } from "./_lib/manageSubscription";
 
@@ -31,8 +31,8 @@ const relevantEvents = new Set([
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const buf = await buffer(req)
-    const secret = req.headers['stripe-signature']
+    const buf = await buffer(req);
+    const secret = req.headers['stripe-signature'];
 
     let event: Stripe.Event;
 

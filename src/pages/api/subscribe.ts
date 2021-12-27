@@ -26,9 +26,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         )
       )
     )
-
     
-    let customerId = user.data.stripe_customer_id
+    let customerId = user.data.stripe_customer_id;
 
     if (!customerId) {
       const stripeCustomer = await stripe.customers.create({
@@ -48,8 +47,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       customerId = stripeCustomer.id
     }
-
-
 
     const stripeCheckoutSession = await stripe.checkout.sessions.create({
       customer: customerId,
