@@ -9,7 +9,7 @@ type User = {
     id: string
   }
   data: {
-    stripe_customer_id: string
+    stripe_customer_id
   }
 }
 
